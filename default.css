@@ -60,3 +60,8 @@ footer {
   color: #fff;
   text-align: center;
 }
+
+small-image {
+  width: 200px;
+  height: auto;
+}
