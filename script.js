@@ -7,7 +7,8 @@ const elements = [
       { text: 'Link 1.1', url: 'https://example.com/link1.1' },
       { text: 'Link 1.2', url: 'https://example.com/link1.2' },
       { text: 'Link 1.3', url: 'https://example.com/link1.3' }
-    ]
+    ],
+    imageLink: 'https://example.com/image1'
   },
   {
     title: 'Element 2',
@@ -16,7 +17,8 @@ const elements = [
       { text: 'Link 2.1', url: 'https://example.com/link2.1' },
       { text: 'Link 2.2', url: 'https://example.com/link2.2' },
       { text: 'Link 2.3', url: 'https://example.com/link2.3' }
-    ]
+    ],
+    imageLink: 'https://example.com/image2'
   },
   // Add more elements as needed
 ];
@@ -33,10 +35,15 @@ elements.forEach(element => {
 
   div.appendChild(h3);
 
+  const imageLink = document.createElement('a');
+  imageLink.href = element.imageLink;
+
   const image = document.createElement('img');
   image.src = element.image;
   image.alt = element.title;
-  div.appendChild(image);
+  imageLink.appendChild(image);
+
+  div.appendChild(imageLink);
 
   element.links.forEach(link => {
     const a = document.createElement('a');
