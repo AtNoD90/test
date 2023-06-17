@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JS Funky2</title>
+  <title>Dynamic Table with Links and Images</title>
   <style>
     /* CSS styles for the table */
-    body {
-      display: flex;
-      justify-content: center;
-      background-color: dimgray;
-    }
     table {
       border-collapse: collapse;
     }
@@ -36,71 +31,56 @@
     // Sample data (replace with your own data)
     const data = [
       {
-        text1: "Link 1",
-        link1: "https://example.com/link1",
-        text2: "Link 2",
-        link2: "https://example.com/link2",
-        text3: "Link 3",
-        link3: "https://example.com/link3",
-        image1: "https://example.com/image1.jpg",
-        image2: "https://example.com/image2.jpg"
+        links: [
+          { text: "Link 1", href: "https://example.com/link1" },
+          { text: "Link 2", href: "https://example.com/link2" },
+          { text: "Link 3", href: "https://example.com/link3" }
+        ],
+        images: [
+          "https://example.com/image1.jpg",
+          "https://example.com/image2.jpg",
+          "https://example.com/image3.jpg"
+        ]
       },
       {
-        text1: "Link 4",
-        link1: "https://example.com/link4",
-        text2: "Link 5",
-        link2: "https://example.com/link5",
-        text3: "Link 6",
-        link3: "https://example.com/link6",
-        image1: "https://example.com/image1.jpg",
-        image2: "https://example.com/image2.jpg"
+        links: [
+          { text: "Link 4", href: "https://example.com/link4" },
+          { text: "Link 5", href: "https://example.com/link5" }
+        ],
+        images: [
+          "https://example.com/image4.jpg",
+          "https://example.com/image5.jpg",
+          "https://example.com/image6.jpg",
+          "https://example.com/image7.jpg"
+        ]
       }
     ];
 
     // Get the container element
     const tableContainer = document.getElementById("table-container");
 
-    // Create the table header row
-    const headerRow = document.createElement("tr");
-    headerRow.innerHTML = "<th>Links</th><th>Images</th>";
-    tableContainer.appendChild(headerRow);
-
     // Iterate over the data and create table rows dynamically
     data.forEach(item => {
       // Create the table row
       const tableRow = document.createElement("tr");
 
-      // Create the cell for links
+      // Create the table cells for links
       const linksCell = document.createElement("td");
-
-      // Create the three text hyperlinks
-      for (let i = 1; i <= 3; i++) {
-        const linkText = item["text" + i];
-        const linkHref = item["link" + i];
-
-        const link = document.createElement("a");
-        link.href = linkHref;
-        link.textContent = linkText;
-        linksCell.appendChild(link);
-        tableRow.appendChild(linksCell);
-      }
-
-      // Add the links cell to the table row
+      item.links.forEach(link => {
+        const linkElement = document.createElement("a");
+        linkElement.href = link.href;
+        linkElement.textContent = link.text;
+        linksCell.appendChild(linkElement);
+      });
       tableRow.appendChild(linksCell);
 
-      // Create the cell for images
+      // Create the table cells for images
       const imagesCell = document.createElement("td");
-
-      // Create the two image elements
-      for (let i = 1; i <= 2; i++) {
-        const imageSrc = item["image" + i];
-
-        const image = document.createElement("img");
-        image.src = imageSrc;
-        imagesCell.appendChild(image);
-      }
-
-      // Add the images cell to the table row
+      item.images.forEach(imageSrc => {
+        const imageElement = document.createElement("img");
+        imageElement.src = imageSrc;
+        imagesCell.appendChild(imageElement);
+      });
       tableRow.appendChild(imagesCell);
 
       // Add the table row to the table container
