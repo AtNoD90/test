@@ -1,27 +1,49 @@
-// Link data
-const links = [
-  { name: 'Link 1', url: 'https://example.com', image: 'link1.png' },
-  { name: 'Link 2', url: 'https://example.com', image: 'link2.png' },
-  { name: 'Link 3', url: 'https://example.com', image: 'link3.png' },
-  // Add more links as needed
+// Element data
+const elements = [
+  {
+    title: 'Element 1',
+    image: 'image1.jpg',
+    links: [
+      { text: 'Link 1.1', url: 'https://example.com/link1.1' },
+      { text: 'Link 1.2', url: 'https://example.com/link1.2' },
+      { text: 'Link 1.3', url: 'https://example.com/link1.3' }
+    ]
+  },
+  {
+    title: 'Element 2',
+    image: 'image2.jpg',
+    links: [
+      { text: 'Link 2.1', url: 'https://example.com/link2.1' },
+      { text: 'Link 2.2', url: 'https://example.com/link2.2' },
+      { text: 'Link 2.3', url: 'https://example.com/link2.3' }
+    ]
+  },
+  // Add more elements as needed
 ];
 
-// Create link items
-const linkContainer = document.getElementById('link-container');
+// Create element list
+const elementList = document.getElementById('element-list');
 
-links.forEach(link => {
-  const linkItem = document.createElement('a');
-  linkItem.classList.add('link-item');
-  linkItem.href = link.url;
+elements.forEach(element => {
+  const div = document.createElement('div');
+  div.classList.add('element');
+
+  const h3 = document.createElement('h3');
+  h3.textContent = element.title;
+
+  div.appendChild(h3);
 
   const image = document.createElement('img');
-  image.src = link.image;
-  image.alt = link.name;
+  image.src = element.image;
+  image.alt = element.title;
+  div.appendChild(image);
 
-  const name = document.createElement('span');
-  name.textContent = link.name;
+  element.links.forEach(link => {
+    const a = document.createElement('a');
+    a.textContent = link.text;
+    a.href = link.url;
+    div.appendChild(a);
+  });
 
-  linkItem.appendChild(image);
-  linkItem.appendChild(name);
-  linkContainer.appendChild(linkItem);
+  elementList.appendChild(div);
 });
