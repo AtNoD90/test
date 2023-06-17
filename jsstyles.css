@@ -1,3 +1,7 @@
+body {
+  background-color: darkgray;
+}
+
 .element {
   margin-bottom: 10px;
 }
