@@ -28,6 +28,7 @@
   </style>
 </head>
 <body>
+  <h2 class="table-title">Funky Table</h2>
   <table id="table-container"></table>
 
   <script>
@@ -62,6 +63,16 @@
 
     // Get the container element
     const tableContainer = document.getElementById("table-container");
+
+    // Create the table header
+    const tableHeader = tableContainer.createTHead();
+    const headerRow = tableHeader.insertRow();
+    const linksHeaderCell = document.createElement("th");
+    linksHeaderCell.textContent = "Links";
+    headerRow.appendChild(linksHeaderCell);
+    const imagesHeaderCell = document.createElement("th");
+    imagesHeaderCell.textContent = "Images";
+    headerRow.appendChild(imagesHeaderCell);
 
     // Iterate over the data and create table rows dynamically
     data.forEach(item => {
