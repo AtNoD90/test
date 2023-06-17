@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS Funky2</title>
+  <style>
+    /* CSS styles for the table */
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+    img {
+      width: 50px;
+      height: 50px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <table id="table-container"></table>
+
+  <script>
+    // JavaScript code to dynamically create the table
+
+    // Sample data (replace with your own data)
+    const data = [
+      {
+        text1: "Link 1",
+        link1: "https://example.com/link1",
+        text2: "Link 2",
+        link2: "https://example.com/link2",
+        text3: "Link 3",
+        link3: "https://example.com/link3",
+        image1: "https://example.com/image1.jpg",
+        image2: "https://example.com/image2.jpg"
+      },
+      {
+        text1: "Link 4",
+        link1: "https://example.com/link4",
+        text2: "Link 5",
+        link2: "https://example.com/link5",
+        text3: "Link 6",
+        link3: "https://example.com/link6",
+        image1: "https://example.com/image1.jpg",
+        image2: "https://example.com/image2.jpg"
+      }
+    ];
+
+    // Get the container element
+    const tableContainer = document.getElementById("table-container");
+
+    // Create the table header row
+    const headerRow = document.createElement("tr");
+    headerRow.innerHTML = "<th>Links</th><th>Images</th>";
+    tableContainer.appendChild(headerRow);
+
+    // Iterate over the data and create table rows dynamically
+    data.forEach(item => {
+      // Create the table row
+      const tableRow = document.createElement("tr");
+
+      // Create the cell for links
+      const linksCell = document.createElement("td");
+
+      // Create the three text hyperlinks
+      for (let i = 1; i <= 3; i++) {
+        const linkText = item["text" + i];
+        const linkHref = item["link" + i];
+
+        const link = document.createElement("a");
+        link.href = linkHref;
+        link.textContent = linkText;
+        linksCell.appendChild(link);
+      }
+
+      // Add the links cell to the table row
+      tableRow.appendChild(linksCell);
+
+      // Create the cell for images
+      const imagesCell = document.createElement("td");
+
+      // Create the two image elements
+      for (let i = 1; i <= 2; i++) {
+        const imageSrc = item["image" + i];
+
+        const image = document.createElement("img");
+        image.src = imageSrc;
+        imagesCell.appendChild(image);
+      }
+
+      // Add the images cell to the table row
+      tableRow.appendChild(imagesCell);
+
+      // Add the table row to the table container
+      tableContainer.appendChild(tableRow);
+    });
+  </script>
+</body>
+</html>
