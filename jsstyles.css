@@ -3,10 +3,12 @@
 }
 
 .element h3 {
+  text-align: center;
   margin: 0;
 }
 
 .element a {
+  text-align: center;
   display: block;
   margin-bottom: 5px;
   text-decoration: none;
@@ -14,6 +16,7 @@
 }
 
 .element img {
+  text-align: center;
   width: 100px;
   height: 100px;
   object-fit: cover;
