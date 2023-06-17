@@ -1,19 +1,21 @@
-.link-item {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #333;
+.element {
   margin-bottom: 10px;
 }
 
-.link-item img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-right: 10px;
+.element h3 {
+  margin: 0;
 }
 
-.link-item span {
-  font-size: 14px;
+.element a {
+  display: block;
+  margin-bottom: 5px;
+  text-decoration: none;
+  color: blue;
+}
+
+.element img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
 }
