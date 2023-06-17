@@ -1,51 +1,66 @@
-// JavaScript code to dynamically create the list
-
-// Sample data (replace with your own data)
+// Sample data containing the elements with text and image links
 const data = [
-    {
-        text1: "Link 1",
-        link1: "https://example.com/link1",
-        text2: "Link 2",
-        link2: "https://example.com/link2",
-        text3: "Link 3",
-        link3: "https://example.com/link3",
-        image: "https://example.com/image.jpg"
-    },
-    {
-        text1: "Link 4",
-        link1: "https://example.com/link4",
-        text2: "Link 5",
-        link2: "https://example.com/link5",
-        text3: "Link 6",
-        link3: "https://example.com/link6",
-        image: "https://example.com/image.jpg"
-    }
+  {
+    text1: 'Link 1 Text',
+    link1: 'https://example.com/link1',
+    text2: 'Link 2 Text',
+    link2: 'https://example.com/link2',
+    text3: 'Link 3 Text',
+    link3: 'https://example.com/link3',
+    imageLink: 'https://example.com/image.jpg'
+  },
+  {
+    text1: 'Link 4 Text',
+    link1: 'https://example.com/link4',
+    text2: 'Link 5 Text',
+    link2: 'https://example.com/link5',
+    text3: 'Link 6 Text',
+    link3: 'https://example.com/link6',
+    imageLink: 'https://example.com/image2.jpg'
+  }
+  // Add more elements as needed
 ];
 
-// Get the container element
-const listContainer = document.getElementById("list-container");
+// Function to create and append an element to the container
+function createElement(elementData) {
+  const elementContainer = document.getElementById('element-container');
 
-// Iterate over the data and create list elements dynamically
-data.forEach(item => {
-// Create the list item element
-const listItem = document.createElement("li");
+  // Create a new element div
+  const element = document.createElement('div');
+  element.className = 'element';
 
-// Create the image element
-const image = document.createElement("img");
-image.src = item.image;
-listItem.appendChild(image);
+  // Create text hyperlinks
+  const link1 = document.createElement('a');
+  link1.href = elementData.link1;
+  link1.textContent = elementData.text1;
 
-// Create the three text hyperlinks
-for (let i = 1; i <= 3; i++) {
-    const linkText = item["text" + i];
-    const linkHref = item["link" + i];
+  const link2 = document.createElement('a');
+  link2.href = elementData.link2;
+  link2.textContent = elementData.text2;
 
-    const link = document.createElement("a");
-    link.href = linkHref;
-    link.textContent = linkText;
-    listItem.appendChild(link);
-    }
+  const link3 = document.createElement('a');
+  link3.href = elementData.link3;
+  link3.textContent = elementData.text3;
 
-// Add the list item to the list container
-listContainer.appendChild(listItem);
+  // Create image link
+  const imageLink = document.createElement('a');
+  imageLink.href = elementData.imageLink;
+
+  const image = document.createElement('img');
+  image.src = elementData.imageLink;
+  image.alt = 'Image';
+
+  // Append the elements to the container
+  element.appendChild(link1);
+  element.appendChild(link2);
+  element.appendChild(link3);
+  imageLink.appendChild(image);
+  element.appendChild(imageLink);
+
+  elementContainer.appendChild(element);
+}
+
+// Loop through the data and create elements for each item
+data.forEach(elementData => {
+  createElement(elementData);
 });
