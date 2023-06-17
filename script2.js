@@ -23,7 +23,7 @@ const data = [
 
 // Function to create and append an element to the container
 function createElement(elementData) {
-  const elementContainer = document.getElementById('element-container');
+  const elementContainer = document.getElementById('element-list');
 
   // Create a new element div
   const element = document.createElement('div');
