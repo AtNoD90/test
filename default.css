@@ -62,6 +62,6 @@ footer {
 }
 
 .small-image {
-  width: 200px;
-  height: auto;
+  width: auto;
+  height: 100px;
 }
