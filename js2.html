@@ -107,7 +107,9 @@
         imageElement.src = image.src;
 
         const imageLink = document.createElement("a");
-        imageLink.href = image.href;
+        if (image.href != 'null') {
+          imageLink.href = image.href;
+        }
         imageLink.appendChild(imageElement);
 
         const imageCell = document.createElement("td");
